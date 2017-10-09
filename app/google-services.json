@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "487422485836",
+    "project_id": "firebase-mycarbonfootprint"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487422485836:android:b348ba248ec78470",
+        "android_client_info": {
+          "package_name": "maksach.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487422485836-cpb6i65r4difr3r2cmp9h15gorm0hvnk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "maksach.myapplication",
+            "certificate_hash": "ed990f01ec4664632c255a7c40160048ab5f1651"
+          }
+        },
+        {
+          "client_id": "487422485836-bo12dcu4i31paqlvgi7b8lt44i9ofh7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiBWtoOHrAxu2hhf6nxJUw2rzK5p0kvBo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

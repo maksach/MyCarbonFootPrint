@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/car_mpg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Car MPG" />
+
+    <EditText
+        android:id="@+id/miles_driven"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Miles Driven" />
+
+    <EditText
+        android:id="@+id/c02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="C02 per Gallon" />
+
+    <EditText
+        android:id="@+id/electricity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Electricity Usage" />
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton android:id="@+id/radio_vegetables"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vegetarian"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/radio_meat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Meat Eater" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onCalculateClicked"
+        android:text="Calculate" />
+</LinearLayout>
