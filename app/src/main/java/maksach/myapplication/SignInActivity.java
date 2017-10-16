@@ -52,7 +52,7 @@ public class SignInActivity extends AppCompatActivity
                 switch (v.getId()) {
                     case R.id.sign_in_button:
                         //modified the button
-                        Intent mainIntent = new Intent(SignInActivity.this, MainActivity.class);
+                        Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
                         startActivity(mainIntent);
                         // signIn();
 
@@ -115,7 +115,7 @@ public class SignInActivity extends AppCompatActivity
             //updateUI(true);
 
             //GO TO MAIN ACTIVITY
-            Intent mainIntent = new Intent(SignInActivity.this, MainActivity.class);
+            Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
             startActivity(mainIntent);
         } else {
             // Signed out, show unauthenticated UI.

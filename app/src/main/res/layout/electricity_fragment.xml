@@ -1,0 +1,79 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:paddingTop="25sp"
+            android:layout_gravity="center"
+            android:src="@drawable/electricity"/>
+
+        <TextView
+            android:id="@+id/car_mpg"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:paddingTop="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Choose a State" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:prompt="@string/state_prompt"
+            android:entries="@array/state_arrays" />
+
+
+
+        <TextView
+            android:id="@+id/electricityDetails"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:paddingTop="20sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="In the State of AZ\n Nuclear: 29%\nNatural Gas: 24%\nCoal: 38%\nRenewables: 9%" />
+
+        <EditText
+            android:id="@+id/electricityBill"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:paddingTop="20sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Electricity Consumed" />
+
+        <TextView
+            android:id="@+id/electricityUnits"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:paddingTop="5sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="kg CO2 / kWh"/>
+
+
+        <Button
+            android:id="@+id/button_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_gravity="center"
+            android:onClick="onTransportCalculateClicked"
+            android:text="Calculate" />
+
+        <TextView
+            android:id="@+id/transportResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""/>
+    </LinearLayout>
+</ScrollView>

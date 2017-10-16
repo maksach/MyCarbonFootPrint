@@ -76,18 +76,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onCalculateClicked(View view){
-        EditText mpg=(EditText)findViewById((R.id.car_mpg));
-        EditText driven=(EditText)findViewById((R.id.miles_driven));
-        EditText carbon=(EditText)findViewById((R.id.c02));
-        EditText electric=(EditText)findViewById((R.id.electricity));
+        EditText mpgInput=(EditText)findViewById((R.id.car_mpg));
+        EditText milesInput=(EditText)findViewById((R.id.miles_driven));
+        //EditText carbonInput =(EditText)findViewById((R.id.c02));
+        //EditText electric=(EditText)findViewById((R.id.electricity));
 
 
     try{
-        Double car_mpg=  CovertNumber(mpg.getText().toString());
-        Double miles=CovertNumber(driven.getText().toString());
-        Double car_c02=CovertNumber(carbon.getText().toString());
-        Double lightning= CovertNumber(electric.getText().toString());
-        Double total_carbon = cal(car_mpg,miles,car_c02,lightning);
+        Double mpg = CovertNumber(mpgInput.getText().toString());
+        Double miles=CovertNumber(milesInput.getText().toString());
+        //Double car_c02=CovertNumber(carbon.getText().toString());
+        //Double lightning= CovertNumber(electric.getText().toString());
+        Double total_carbon = calculateTransportation(mpg, miles);
 
         //passing value start new activity
         Intent tempIntent = new Intent(this, Result_page.class);
@@ -127,9 +127,23 @@ public class MainActivity extends AppCompatActivity {
     ////////////////////////////c
     //////////////////////////
    // calculation
-    public Double cal(Double mpg_value,Double miles_value,Double c02_value,Double electric_value )
-    {
-        double GAS= (miles_value/mpg_value )*2.254;
-        return GAS;
+    public Double calculateTransportation(Double mpgValue, Double milesDriven) {
+        //https://www.epa.gov/sites/production/files/2016-02/documents/420f14040a.pdf
+        //8.91kg of co2 emitted for a gallon of fuel if it does not have ethanol (10.15 with ethanol)
+        double carbonGas= (milesDriven / mpgValue) * 8.91;
+        return carbonGas;
+    }
+
+    public Double calculateFood(Double carbonFood) {
+        //http://www.greeneatz.com/foods-carbon-footprint.html
+        //meat lover = 8.2 kg/day
+        //average = 6.2 kg/day
+        //vegetarian = 4.2 kg/day
+        return carbonFood;
+    }
+
+    public Double calculateElectricity() {
+        double carbonElectricity = 0.0;
+        return carbonElectricity;
     }
 }
