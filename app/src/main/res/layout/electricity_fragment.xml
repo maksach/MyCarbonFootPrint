@@ -61,19 +61,29 @@
 
 
         <Button
-            android:id="@+id/button_send"
+            android:id="@+id/button_calcElectricity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"
             android:layout_gravity="center"
-            android:onClick="onTransportCalculateClicked"
+            android:onClick="onElectricityCalculateClicked"
             android:text="Calculate" />
 
         <TextView
-            android:id="@+id/transportResult"
+            android:id="@+id/electricityResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textSize="50sp"
+            android:paddingTop="10sp"
+            android:fontFamily="sans-serif-light"
+            android:textAlignment="center"
             android:text=""/>
+
+        <ImageView
+            android:id="@+id/co2transport"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_gravity="center" />
     </LinearLayout>
 </ScrollView>

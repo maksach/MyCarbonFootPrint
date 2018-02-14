@@ -1,5 +1,8 @@
 package maksach.myapplication;
 
+import android.content.Context;
+import android.os.Parcelable;
+import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,8 +25,13 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+
 import android.util.Log;
 import android.widget.Button;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.io.Serializable;
 
 public class SignInActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -43,40 +51,6 @@ public class SignInActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        // Set the dimensions of the sign-in button.
-        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        OnClickListener signInListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.sign_in_button:
-                        //modified the button
-                        Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
-                        startActivity(mainIntent);
-                        // signIn();
-
-                        break;
-                }
-            }
-        };
-        /*
-        // Set the dimensions of the sign-out button.
-        Button signOutButton = (Button) findViewById(R.id.sign_out_button);
-        OnClickListener signOutListener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.sign_out_button:
-                        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                        break;
-                }
-            }
-        };
-
-        findViewById(R.id.sign_out_button).setOnClickListener(signOutListener);*/
-        findViewById(R.id.sign_in_button).setOnClickListener(signInListener);
-
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -88,13 +62,35 @@ public class SignInActivity extends AppCompatActivity
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+        // Set the dimensions of the sign-in button.
+        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        OnClickListener signInListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.sign_in_button:
+                        //modified the button
+                        signIn();
+                        //Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
+                        //startActivity(mainIntent);
+                        // signIn();
+
+                        break;
+                }
+            }
+        };
+        findViewById(R.id.sign_in_button).setOnClickListener(signInListener);
     }
 
+    // sign in after signin button on click
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    // what's getting the data
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -110,12 +106,17 @@ public class SignInActivity extends AppCompatActivity
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
+
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName())
             //updateUI(true);
 
+            // acct object let's you do anything with the email account that just signed in
+            GoogleSignInAccount acct = result.getSignInAccount();
             //GO TO MAIN ACTIVITY
+
+
             Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
+            mainIntent.putExtra("account", acct);
             startActivity(mainIntent);
         } else {
             // Signed out, show unauthenticated UI.

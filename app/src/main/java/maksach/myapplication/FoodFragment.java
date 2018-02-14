@@ -22,6 +22,22 @@ public class FoodFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     TextView dietProgress;
     double doubleProgress;
 
+    OnDataPass dataPasser;
+
+    public interface OnDataPass {
+        public void onFoodDataPass(String data);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        dataPasser = (OnDataPass) context;
+    }
+
+    public void passData(String data) {
+        dataPasser.onFoodDataPass(data);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,6 +96,9 @@ public class FoodFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             TextView foodResult = (TextView)getView().findViewById(R.id.foodResult);
             String stringTotalCarbonFood = String.format("%.2f", doubleProgress);
             System.out.println(stringTotalCarbonFood);
+
+            passData(stringTotalCarbonFood);
+
             foodResult.setText(stringTotalCarbonFood + "kg");
 
             ImageView co2image = (ImageView)getView().findViewById(R.id.co2food);
@@ -92,6 +111,7 @@ public class FoodFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         }
 
     }
+
 
 
 }

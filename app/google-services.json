@@ -1,19 +1,21 @@
 {
   "project_info": {
-    "project_number": "487422485836",
-    "project_id": "firebase-mycarbonfootprint"
+    "project_number": "326758225919",
+    "firebase_url": "https://footprint-66ca6.firebaseio.com",
+    "project_id": "footprint-66ca6",
+    "storage_bucket": "footprint-66ca6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487422485836:android:b348ba248ec78470",
+        "mobilesdk_app_id": "1:326758225919:android:b348ba248ec78470",
         "android_client_info": {
           "package_name": "maksach.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "487422485836-cpb6i65r4difr3r2cmp9h15gorm0hvnk.apps.googleusercontent.com",
+          "client_id": "326758225919-q2mvjg4c4pvt00d7p0eq3jpmvn98nnmt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "maksach.myapplication",
@@ -21,13 +23,13 @@
           }
         },
         {
-          "client_id": "487422485836-bo12dcu4i31paqlvgi7b8lt44i9ofh7n.apps.googleusercontent.com",
+          "client_id": "326758225919-oqfhlqgn7arpvv4e4h1p2jrbgvhsdkuv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiBWtoOHrAxu2hhf6nxJUw2rzK5p0kvBo"
+          "current_key": "AIzaSyBfNYWlmquO0mFWcfBD62Ipmttl4ILW6Kw"
         }
       ],
       "services": {
@@ -35,11 +37,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326758225919-oqfhlqgn7arpvv4e4h1p2jrbgvhsdkuv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

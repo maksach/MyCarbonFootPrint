@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_splash">FootPrint</string>
     <string name="title_activity_main">MainActivity</string>
-
+    <string name="title_summary">Summary</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_result">ResultActivity</string>
     <string name="CAL">Calculate</string>
@@ -65,5 +65,14 @@
         <item>WI</item>
         <item>WY</item>
     </string-array>
+    <string name="title_activity_detail_res">detail_res</string>
+    <string name="title_activity_page_res">Page_res</string>
+    <string name="daily_activities">Daily Activities</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_tips_page">tips_page</string>
+    <string name="settings_page">settings_page</string>
+    <string name="title_activity_database_page">Database_page</string>
+    <string name="title_activity_settings_page">Settings_page</string>
 
 </resources>

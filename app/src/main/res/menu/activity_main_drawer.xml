@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Account">
+            <menu>
+                <item
+                    android:id="@+id/records"
+                    android:icon="@drawable/data"
+                    android:title="Data" />
+                <item
+                    android:id="@+id/summary_page"
+                    android:icon="@drawable/summary"
+                    android:title="Summary" />
+                <item
+                    android:id="@+id/tips"
+                    android:icon="@drawable/suggestions"
+                    android:title="Suggestions" />
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/settings"
+                    android:title="Settings" />
+            </menu>
+        </item>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+    <item android:title="Sign Out">
+        <menu>
+            <item
+                android:id="@+id/sign_out"
+                android:icon="@drawable/ic_sign_out"
+                android:title="Sign Out" />
+        </menu>
+    </item>
+
+</menu>
