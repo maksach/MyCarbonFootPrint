@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class Page_res extends AppCompatActivity {
 
@@ -51,13 +54,18 @@ public class Page_res extends AppCompatActivity {
         elec_text.setText(string_des("elec"));
         //lower number
         TextView carbon_number = (TextView) findViewById(R.id.number_total);
-        carbon_number.setText( totoal_Co2 ()+" kg");
+        carbon_number.setText( total_Co2 ()+" kg");
         TextView tree_number = (TextView) findViewById(R.id.tree_number);
         tree_number.setText(cal_tree()+"");
         //lower description
         TextView tree_offset = (TextView) findViewById(R.id.off_des);
-        tree_offset.setText(totoal_Co2()+" kg CO2 = "+ cal_tree() +" tree(s)");
+        tree_offset.setText(total_Co2()+" kg CO2 = "+ cal_tree() +" tree(s)");
 
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference totalCO2DB = database.getReference("total");
+
+        totalCO2DB.setValue(total_Co2());
     }
 
     private String string_des(String type)
@@ -74,7 +82,7 @@ public class Page_res extends AppCompatActivity {
     }
 
 
-    private double totoal_Co2 ()
+    private double total_Co2 ()
     {
         double kg = keyset[0]+keyset[1]+ keyset[2];
         DecimalFormat df = new DecimalFormat("#.##");
@@ -84,6 +92,6 @@ public class Page_res extends AppCompatActivity {
     private int cal_tree()
     {
 
-        return (int) Math.ceil(totoal_Co2()/22);
+        return (int) Math.ceil(total_Co2()/22);
     }
 }

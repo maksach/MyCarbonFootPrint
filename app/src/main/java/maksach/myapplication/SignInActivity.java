@@ -1,37 +1,29 @@
 package maksach.myapplication;
 
-import android.content.Context;
-import android.os.Parcelable;
-import android.provider.SyncStateContract;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import android.app.DialogFragment;
-import android.app.Dialog;
-import com.google.android.gms.common.GoogleApiAvailability;
-
-import android.content.IntentSender.SendIntentException;
-import android.content.DialogInterface;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.SignInButton;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.content.Intent;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
-
-import android.util.Log;
-import android.widget.Button;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.io.Serializable;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -112,9 +104,16 @@ public class SignInActivity extends AppCompatActivity
 
             // acct object let's you do anything with the email account that just signed in
             GoogleSignInAccount acct = result.getSignInAccount();
-            //GO TO MAIN ACTIVITY
 
+            // save new user object into firebase database
+            User newUser = new User(acct.getEmail());
+            // Write a message to the database
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference users = database.getReference("users");
 
+            database.child("users").setValue(newUser);
+
+            // context switch to main activity
             Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);
             mainIntent.putExtra("account", acct);
             startActivity(mainIntent);
