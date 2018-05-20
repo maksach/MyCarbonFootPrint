@@ -28,7 +28,7 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_menu_share" />
 
     <include
         android:id="@+id/include"

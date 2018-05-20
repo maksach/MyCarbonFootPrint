@@ -111,7 +111,7 @@ public class SignInActivity extends AppCompatActivity
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference users = database.getReference("users");
 
-            database.child("users").setValue(newUser);
+//            database.child("users").setValue(newUser);
 
             // context switch to main activity
             Intent mainIntent = new Intent(SignInActivity.this, InputActivity.class);

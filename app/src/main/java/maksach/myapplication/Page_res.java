@@ -1,8 +1,8 @@
 package maksach.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -28,8 +28,12 @@ public class Page_res extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "My FootPrint for today was " + total_Co2() + "!";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
             }
         });
 

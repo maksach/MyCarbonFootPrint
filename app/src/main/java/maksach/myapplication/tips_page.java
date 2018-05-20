@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import java.util.Calendar;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,8 +27,15 @@ public class tips_page extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //present
         preset();
+
+        String[] monthName = { "January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December" };
+
+        Calendar cal = Calendar.getInstance();
+        String month = monthName[cal.get(Calendar.MONTH)];
+
         //set tittle
-        toolbar.setTitle(GetMonth(keyset[0]));
+        toolbar.setTitle(month);
         //toolbar.setBackground();
         setSupportActionBar(toolbar);
 
